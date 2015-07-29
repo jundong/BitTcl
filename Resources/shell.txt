@@ -1,0 +1,25 @@
+
+# Copyright (c) BitBox technologies 2013-2014, Inc.
+
+# Release Version 1.0
+#===============================================================================
+# Change made
+# Version 1.0 
+#       1. Create
+
+catch { console hide }
+
+while { 1 } {
+
+	gets stdin cin
+	
+	set result ""
+	if { [ catch {
+		set result [ eval $cin ]
+	} err ] } {
+		puts $err
+	} else {
+		puts $result
+	}
+
+}

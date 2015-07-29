@@ -1,0 +1,16 @@
+C:\Users\workspace\Documents\Visual Studio 2010\Projects\BitBox\BitTcl\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\workspace\Documents\Visual Studio 2010\Projects\BitBox\BitTcl\bin\Debug\BitTcl.dll
+C:\Users\workspace\Documents\Visual Studio 2010\Projects\BitBox\BitTcl\bin\Debug\BitTcl.pdb
+C:\Users\workspace\Documents\Visual Studio 2010\Projects\BitBox\BitTcl\obj\Debug\BitTcl.dll
+C:\Users\workspace\Documents\Visual Studio 2010\Projects\BitBox\BitTcl\obj\Debug\BitTcl.pdb
+C:\Users\workspace\Documents\Visual Studio 2010\Projects\BitBox\BitTcl\obj\Debug\BitTcl.Properties.Resources.resources
+C:\Users\workspace\Documents\Visual Studio 2010\Projects\BitBox\BitTcl\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\workspace\Documents\Visual Studio 2010\Projects\BitBox\BitTcl\obj\Debug\GenerateResource.write.1.tlog
+C:\C#\project\BitBox\BitTcl\bin\Debug\BitTcl.dll
+C:\C#\project\BitBox\BitTcl\bin\Debug\BitTcl.pdb
+C:\C#\project\BitBox\BitTcl\obj\Debug\ResolveAssemblyReference.cache
+C:\C#\project\BitBox\BitTcl\obj\Debug\BitTcl.Properties.Resources.resources
+C:\C#\project\BitBox\BitTcl\obj\Debug\GenerateResource.read.1.tlog
+C:\C#\project\BitBox\BitTcl\obj\Debug\GenerateResource.write.1.tlog
+C:\C#\project\BitBox\BitTcl\obj\Debug\BitTcl.dll
+C:\C#\project\BitBox\BitTcl\obj\Debug\BitTcl.pdb

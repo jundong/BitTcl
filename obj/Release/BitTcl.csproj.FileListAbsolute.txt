@@ -1,0 +1,6 @@
+C:\C#\project\BitBox\BitTcl\bin\Release\BitTcl.dll
+C:\C#\project\BitBox\BitTcl\bin\Release\BitTcl.pdb
+C:\C#\project\BitBox\BitTcl\obj\Release\BitTcl.Properties.Resources.resources
+C:\C#\project\BitBox\BitTcl\obj\Release\BitTcl.dll
+C:\C#\project\BitBox\BitTcl\obj\Release\BitTcl.pdb
+C:\C#\project\BitBox\BitTcl\obj\Release\BitTcl.csproj.GenerateResource.Cache
