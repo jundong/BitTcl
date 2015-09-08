@@ -14,3 +14,9 @@ C:\C#\project\BitBox\BitTcl\obj\Debug\GenerateResource.read.1.tlog
 C:\C#\project\BitBox\BitTcl\obj\Debug\GenerateResource.write.1.tlog
 C:\C#\project\BitBox\BitTcl\obj\Debug\BitTcl.dll
 C:\C#\project\BitBox\BitTcl\obj\Debug\BitTcl.pdb
+C:\Ixia\Workspace\BitTcl\bin\Debug\BitTcl.dll
+C:\Ixia\Workspace\BitTcl\bin\Debug\BitTcl.pdb
+C:\Ixia\Workspace\BitTcl\obj\Debug\BitTcl.Properties.Resources.resources
+C:\Ixia\Workspace\BitTcl\obj\Debug\BitTcl.csproj.GenerateResource.Cache
+C:\Ixia\Workspace\BitTcl\obj\Debug\BitTcl.dll
+C:\Ixia\Workspace\BitTcl\obj\Debug\BitTcl.pdb

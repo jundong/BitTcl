@@ -357,6 +357,37 @@ namespace BitTcl
             set { exeDir = value; }
         }
 
+        private StreamWriter errLog = null;
+        /// <summary>
+        /// 运行当前目录
+        /// </summary>
+        [Browsable(false)]
+        public StreamWriter ErrLog
+        {
+            get {
+                if (errLog == null)
+                {
+                    errLog = new StreamWriter(exeDir + "\\" + DateTime.Now.Ticks + "_err.txt", true);
+                }
+                return errLog; 
+            }
+        }
+
+        private StreamWriter outputLog = null;
+        /// <summary>
+        /// 运行当前目录
+        /// </summary>
+        [Browsable(false)]
+        public StreamWriter OutputLog
+        {
+            get {
+                if (outputLog == null)
+                {
+                    outputLog = new StreamWriter(exeDir + "\\" + DateTime.Now.Ticks + "_log.txt", true);
+                }
+                return outputLog; 
+            }
+        }
         #endregion
 
         # region Tcl Process setting
@@ -364,7 +395,7 @@ namespace BitTcl
         private List<string> m_TclErr = new List<string>();
         [NonSerialized]
         private Process m_TclProcess;
-        private int max_list_len = 1000;
+        private int max_list_len = 100;
 
         private List<string> bg_output = new List<string>();
         /// <summary>
@@ -523,6 +554,7 @@ namespace BitTcl
             if (e.Data != null)
             {
                 m_TclErr.Add(e.Data);
+                ErrLog.WriteLine(e.Data);
             }
         }
 
@@ -531,16 +563,9 @@ namespace BitTcl
             if (e.Data != null)
             {
                 m_TclOutput.Add(e.Data);
+                OutputLog.WriteLine(e.Data);
                 if (m_TclOutput.Count > max_list_len)
                 {
-                    string bg_file = exeDir + "\\" + DateTime.Now.Ticks + ".txt";
-                    StreamWriter sw = new StreamWriter(bg_file);
-                    foreach (string output in m_TclOutput)
-                    {
-                        sw.WriteLine(output);
-                    }
-                    sw.Close();
-                    bg_output.Add(bg_file);
                     m_TclOutput.Clear();
                 }
             }
@@ -689,6 +714,15 @@ namespace BitTcl
                     new ProgressChangedEventHandler(worker_ProgressChanged);
                 worker.WorkerSupportsCancellation = true;
                 worker.WorkerReportsProgress = true;
+
+                if (ErrLog.BaseStream != null)
+                {
+                    ErrLog.Close();
+                }
+                if (OutputLog.BaseStream != null)
+                {
+                    OutputLog.Close();
+                }
             }
             catch { }
         }
