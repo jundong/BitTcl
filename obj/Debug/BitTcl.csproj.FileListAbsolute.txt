@@ -20,3 +20,4 @@ C:\Ixia\Workspace\BitTcl\obj\Debug\BitTcl.Properties.Resources.resources
 C:\Ixia\Workspace\BitTcl\obj\Debug\BitTcl.csproj.GenerateResource.Cache
 C:\Ixia\Workspace\BitTcl\obj\Debug\BitTcl.dll
 C:\Ixia\Workspace\BitTcl\obj\Debug\BitTcl.pdb
+C:\Ixia\Workspace\BitTcl\obj\Debug\BitTcl.csprojResolveAssemblyReference.cache
