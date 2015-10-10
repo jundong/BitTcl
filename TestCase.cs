@@ -116,10 +116,6 @@ namespace BitTcl
             try
             {
                 File.Delete(ExeDir + "\\TestCase.tcl");
-                if (ErrLog.BaseStream != null)
-                {
-                    ErrLog.Close();
-                }
                 if (OutputLog.BaseStream != null)
                 {
                     OutputLog.Close();

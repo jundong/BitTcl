@@ -357,25 +357,26 @@ namespace BitTcl
             set { exeDir = value; }
         }
 
-        private StreamWriter errLog = null;
+        private string testName = "";
         /// <summary>
-        /// 运行当前目录
+        /// 当前运行测试名
         /// </summary>
         [Browsable(false)]
-        public StreamWriter ErrLog
+        public string TestName
         {
-            get {
-                if (errLog == null)
-                {
-                    errLog = new StreamWriter(exeDir + "\\" + DateTime.Now.Ticks + "_err.txt", true);
-                }
-                return errLog; 
+            get
+            {
+                return testName;
+            }
+            set
+            {
+                testName = value;
             }
         }
 
         private StreamWriter outputLog = null;
         /// <summary>
-        /// 运行当前目录
+        /// 运行时log输出路径
         /// </summary>
         [Browsable(false)]
         public StreamWriter OutputLog
@@ -383,9 +384,17 @@ namespace BitTcl
             get {
                 if (outputLog == null)
                 {
-                    outputLog = new StreamWriter(exeDir + "\\" + DateTime.Now.Ticks + "_log.txt", true);
+                    if (TestName != "") {
+                        DateTime dt = DateTime.Now;
+                        string timeStr = dt.Year.ToString() + dt.Month.ToString() + dt.Day.ToString() + dt.Hour.ToString() + dt.Minute.ToString() + dt.Second.ToString();
+                        outputLog = new StreamWriter(exeDir + "\\" + TestName + "_" + timeStr + ".txt", true);
+                    }
                 }
                 return outputLog; 
+            }
+            set
+            {
+                outputLog = value;
             }
         }
         #endregion
@@ -554,7 +563,10 @@ namespace BitTcl
             if (e.Data != null)
             {
                 m_TclErr.Add(e.Data);
-                ErrLog.WriteLine(e.Data);
+                if (OutputLog != null)
+                {
+                    OutputLog.WriteLine(e.Data);
+                }
             }
         }
 
@@ -563,7 +575,22 @@ namespace BitTcl
             if (e.Data != null)
             {
                 m_TclOutput.Add(e.Data);
-                OutputLog.WriteLine(e.Data);
+                String [] split = e.Data.Split();
+                if (split.Length >= 2 && split[split.Length - 2] == "::testName")
+                {
+                    TestName = split[split.Length - 1];
+                }
+                if (OutputLog != null)
+                {
+                    OutputLog.WriteLine(e.Data);
+
+                    if (split[split.Length - 1] == "stopRun")
+                    {
+                        // 测试结束，关闭log写入
+                        CloseOutputLog();
+                    }
+                }
+
                 if (m_TclOutput.Count > max_list_len)
                 {
                     m_TclOutput.Clear();
@@ -715,14 +742,8 @@ namespace BitTcl
                 worker.WorkerSupportsCancellation = true;
                 worker.WorkerReportsProgress = true;
 
-                if (ErrLog.BaseStream != null)
-                {
-                    ErrLog.Close();
-                }
-                if (OutputLog.BaseStream != null)
-                {
-                    OutputLog.Close();
-                }
+                // 任务结束，关闭log写入
+                CloseOutputLog();
             }
             catch { }
         }
@@ -760,5 +781,19 @@ namespace BitTcl
             m_TclErr.Clear();
         }
 
+        /// <summary>
+        /// 重设状态/进度/输出
+        /// </summary>
+        public void CloseOutputLog()
+        {
+            if (OutputLog.BaseStream != null)
+            {
+                OutputLog.Close();
+                TestName = "";
+                OutputLog = null;
+                m_TclErr.Clear();
+                m_TclOutput.Clear();
+            }
+        }
     }
 }
